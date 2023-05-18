@@ -32,6 +32,10 @@ module ShipEngine
       :webhooks,
       keyword_init: true
     )
+    NamespaceVBeta = Struct.new(
+      :ltl,
+      keyword_init: true
+    )
     Addresses = Struct.new(
       :parse_address,
       :validate_address,
@@ -61,6 +65,14 @@ module ShipEngine
       :label_by_external_shipment_id,
       :purchase_label_with_rate_id,
       :purchase_label_with_shipment_id,
+      keyword_init: true
+    )
+    Ltl = Struct.new(
+      :carriers,
+      :quotes,
+      :spot_quotes,
+      :pickups,
+      :tracking,
       keyword_init: true
     )
     Manifests = Struct.new(
@@ -173,6 +185,15 @@ module ShipEngine
         ),
         webhooks: Webhooks.new(
           root: "/v1/environment/webhooks",
+        )
+      ),
+      vbeta: NamespaceVBeta.new(
+        ltl: Ltl.new(
+          carriers: "/v-beta/ltl/carriers",
+          quotes: "/v-beta/ltl/quotes",
+          spot_quotes: "/v-beta/ltl/spot-quotes",
+          pickups: "/v-beta/ltl/pickups",
+          tracking: "/v-beta/ltl/tracking",
         )
       )
     )
