@@ -10,6 +10,7 @@ module ShipEngine
 
     Paths = Struct.new(
       :v1,
+      :vbeta,
       keyword_init: true
     )
     NamespaceV1 = Struct.new(
